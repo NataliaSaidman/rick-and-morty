@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+    format("woff");
+}
+
+.card {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid gray;
+  flex-direction: column;
+  border-radius: 5px;
+  width: 20%;
+  height: 200px;
+}
+
+.card:hover {
+  cursor: pointer;
+  filter: contrast(120%);
+  scale: 105%;
+}
+
+.name {
+  color: #04afc3;
+  font-family: "Get Schwifty";
+  width: 95%;
+}
+
+span {
+  color: #fff765;
+}

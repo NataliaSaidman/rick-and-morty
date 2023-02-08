@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+    format("woff");
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: "Get Schwifty";
+  color: #08bae3;
+  z-index: 50;
+  -webkit-text-stroke: 0.5px #fff765;
+  font-size: 50px;
+}
+
+.cardContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 10px;
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 12px;
+  border-radius: 10px;
+  width: 7%;
+  margin-left: 10px;
+}
+
+.button__pages {
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.icon {
+  font-size: 20px;
+  color: #08bae3;
+}

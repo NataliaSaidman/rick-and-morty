@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Personajes from "./components/Personajes/index";
+import { useState } from "react";
+import Episodios from "./components/Episodios";
 
 function App() {
+  const [buttonId, setButtonId] = useState("0");
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setButtonId(() => {
+      if (buttonId === e.target.id) {
+        return 0;
+      } else {
+        return e.target.id;
+      }
+    });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="containerButtons">
+        <button className="buttonPersonajes" id={1} onClick={handleClick}>
+          Personajes
+        </button>
+        <button className="buttonPersonajes" id={2} onClick={handleClick}>
+          Episodios
+        </button>
+      </div>
+      {buttonId === "1" && <Personajes />}
+      {buttonId === "2" && <Episodios />}
     </div>
   );
 }
