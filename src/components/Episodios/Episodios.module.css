@@ -11,14 +11,6 @@
   flex-direction: column;
 }
 
-.title {
-  font-family: "Get Schwifty";
-  color: #08bae3;
-  z-index: 50;
-  -webkit-text-stroke: 0.5px #fff765;
-  font-size: 50px;
-}
-
 .cardContainer {
   width: 100%;
   display: flex;
@@ -49,4 +41,8 @@
 .icon {
   font-size: 20px;
   color: #08bae3;
+}
+
+.loading {
+  width: 300px;
 }

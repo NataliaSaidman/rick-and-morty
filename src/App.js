@@ -1,34 +1,23 @@
 import "./App.css";
 import Personajes from "./components/Personajes/index";
-import { useState } from "react";
 import Episodios from "./components/Episodios";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [buttonId, setButtonId] = useState("0");
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setButtonId(() => {
-      if (buttonId === e.target.id) {
-        return 0;
-      } else {
-        return e.target.id;
-      }
-    });
-  };
   return (
-    <div className="App">
-      <div className="containerButtons">
-        <button className="buttonPersonajes" id={1} onClick={handleClick}>
-          Personajes
-        </button>
-        <button className="buttonPersonajes" id={2} onClick={handleClick}>
-          Episodios
-        </button>
-      </div>
-      {buttonId === "1" && <Personajes />}
-      {buttonId === "2" && <Episodios />}
-    </div>
+    <BrowserRouter className="App">
+      <NavBar />
+      <h1 className="title">Rick and Morty</h1>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/personajes" element={<Personajes />} />
+        <Route path="/episodios" element={<Episodios />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

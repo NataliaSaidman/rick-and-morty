@@ -1,49 +1,18 @@
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+    format("woff");
+}
+
 .App {
   text-align: center;
 }
 
-.buttonPersonajes {
-  padding: 10px;
-  border-radius: 10px;
+.title {
+  font-family: "Get Schwifty";
+  color: #08bae3;
+  z-index: 50;
+  -webkit-text-stroke: 0.5px #fff765;
+  font-size: 70px;
+  text-align: center;
 }
-
-.containerButtons {
-  display: flex;
-  justify-content: flex-start;
-  margin: 15px 15px;
-}
-
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

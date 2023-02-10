@@ -10,14 +10,17 @@ const Personajes = () => {
   const [input, setInput] = useState([]);
   const [busqueda, setBusqueda] = useState([]);
   const [count, setCount] = useState(1);
+  const [loading, setLoading] = useState("false");
 
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
       fetch(
         `https://rickandmortyapi.com/api/character/?name=${busqueda}&&page=${count}`
       )
         .then((res) => res.json())
         .then((data) => setPersonajes(data.results));
+      setLoading(false);
     }, 3000);
     return () => setPersonajes([]);
   }, [busqueda, count]);
@@ -41,7 +44,6 @@ const Personajes = () => {
 
   return (
     <div className={s.container}>
-      <h1 className={s.title}>Rick and Morty</h1>
       <form>
         <input
           className={s.input}
@@ -61,7 +63,15 @@ const Personajes = () => {
           <TbPlayerTrackNext className={s.icon} />
         </button>
       </div>
+
       <div className={s.cardContainer}>
+        {loading && (
+          <img
+            className={s.loading}
+            src="https://media.tenor.com/BgR83Df82t0AAAAi/portal-rick-and-morty.gif"
+            alt="gif"
+          />
+        )}
         {personajes.map((p) => (
           <Card key={p.id} name={p.name} image={p.image} />
         ))}

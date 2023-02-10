@@ -12,6 +12,7 @@
   border: 2px solid gray;
   flex-direction: column;
   border-radius: 5px;
+  background-color: #32356a;
 }
 
 .card:hover {
@@ -21,7 +22,11 @@
 }
 
 .name {
-  color: #04afc3;
+  color: #fff765;
   font-family: "Get Schwifty";
   width: 95%;
+}
+
+.image {
+  width: 100%;
 }

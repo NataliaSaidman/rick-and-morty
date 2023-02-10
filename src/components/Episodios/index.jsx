@@ -10,14 +10,17 @@ const Episodios = () => {
   const [input, setInput] = useState([]);
   const [busqueda, setBusqueda] = useState([]);
   const [count, setCount] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
       fetch(
         `https://rickandmortyapi.com/api/episode/?name=${busqueda}&&page=${count}`
       )
         .then((res) => res.json())
         .then((data) => setEpisodios(data.results));
+      setLoading(false);
     }, 3000);
     return () => setEpisodios([]);
   }, [busqueda, count]);
@@ -41,7 +44,6 @@ const Episodios = () => {
 
   return (
     <div className={s.container}>
-      <h1 className={s.title}>Rick and Morty</h1>
       <form>
         <input
           className={s.input}
@@ -62,6 +64,13 @@ const Episodios = () => {
         </button>
       </div>
       <div className={s.cardContainer}>
+        {loading && (
+          <img
+            className={s.loading}
+            src="https://media.tenor.com/BgR83Df82t0AAAAi/portal-rick-and-morty.gif"
+            alt="gif"
+          />
+        )}
         {episodios.map((e) => (
           <Card
             key={e.id}
