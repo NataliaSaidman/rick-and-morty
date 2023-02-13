@@ -6,14 +6,14 @@ const NavBar = () => {
   return (
     <div className={s.navBar}>
       <div className={s.containerLogo}>
-        <Link to="/home">
+        <Link to="/">
           <img
             className={s.logo}
             src="https://www.pngkey.com/png/full/5-51313_rick-and-morty-circle.png"
             alt="logo"
           />
         </Link>
-        <Link to="/home" className={s.buttonHome}>
+        <Link to="/" className={s.buttonHome}>
           Home
         </Link>
       </div>

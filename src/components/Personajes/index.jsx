@@ -73,7 +73,7 @@ const Personajes = () => {
           />
         )}
         {personajes.map((p) => (
-          <Card key={p.id} name={p.name} image={p.image} />
+          <Card key={p.id} id={p.id} name={p.name} image={p.image} />
         ))}
       </div>
     </div>
