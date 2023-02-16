@@ -1,29 +1,36 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import s from "./Personajes.module.css";
 import Card from "./Card/Card";
 import { TbPlayerTrackPrev, TbPlayerTrackNext } from "react-icons/tb";
 
 const Personajes = () => {
   const [personajes, setPersonajes] = useState([]);
-  const [input, setInput] = useState([]);
-  const [busqueda, setBusqueda] = useState([]);
+  const [input, setInput] = useState();
   const [count, setCount] = useState(1);
   const [loading, setLoading] = useState("false");
+  const [searchParams, setSearchParams] = useSearchParams({
+    query: "",
+  });
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       fetch(
-        `https://rickandmortyapi.com/api/character/?name=${busqueda}&&page=${count}`
+        `https://rickandmortyapi.com/api/character/?name=${searchParams.get(
+          "query"
+        )}&page=${count}`
       )
         .then((res) => res.json())
         .then((data) => setPersonajes(data.results));
       setLoading(false);
-    }, 3000);
+    }, 2000);
     return () => setPersonajes([]);
-  }, [busqueda, count]);
+  }, [searchParams, count]);
+
+  console.log("input", input);
+  console.log("params", searchParams);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -31,10 +38,10 @@ const Personajes = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setBusqueda(input);
+    setSearchParams({ query: input });
   };
 
-  const handleClickNext = () => {
+  const handleClickNext = (e) => {
     setCount(count + 1);
   };
 
@@ -50,6 +57,7 @@ const Personajes = () => {
           type="text"
           placeholder="Buscador de personajes"
           onChange={handleChange}
+          value={searchParams.get("query")}
         />
         <button onClick={handleClick} className={s.button}>
           Buscar
@@ -72,7 +80,7 @@ const Personajes = () => {
             alt="gif"
           />
         )}
-        {personajes.map((p) => (
+        {personajes?.map((p) => (
           <Card key={p.id} id={p.id} name={p.name} image={p.image} />
         ))}
       </div>
